@@ -23,7 +23,7 @@
 
   // отримуємо значення для першого зсуву вліво
   let offset = (1200 - (windowWidth-1200)/2);
-  
+
   // зсуваємо усе вліво при завантаженні
   items.forEach(item => item.style.transform = `translateX(-${offset}px)`);
 
@@ -34,5 +34,8 @@
   });
 
   // гортаємо вправо
-  right.addEventListener();
+  right.addEventListener('click', () => {
+    offset -= 1200;
+    items.forEach(item => item.style.transform = `translateX(-${offset}px)`);
+  });
 }
