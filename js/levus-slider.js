@@ -12,12 +12,6 @@
   // кнопка вправо
   const right = $('#levus-slider .right')[0];
 
-  // блок, який буде зсуватися
-  const wrapper = $('#levus-slider-wrapper')[0];
-
-  // встановлюємо ширину блока
-  wrapper.style.width = 1200 * items.length + 'px';
-
   // отримуємо ширину екрану
   const windowWidth = document.documentElement.clientWidth;
 
