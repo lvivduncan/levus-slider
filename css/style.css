@@ -36,4 +36,6 @@
 #levus-slider .item{
   width: 1200px;
   margin: auto;
+  -webkit-transition: all .5s;
+  transition: all .5s;
 }
