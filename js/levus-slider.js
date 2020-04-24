@@ -12,9 +12,6 @@
   // кнопка вправо
   const right = $('#levus-slider .right')[0];
 
-  /* // отримуємо ширину екрану
-  const windowWidth = document.documentElement.clientWidth; */
-
   // тут будемо зберігати усі розміри
   const array = [];
 
@@ -23,12 +20,18 @@
     array.push(1200 * (i - 1));
   });
 
-  console.log(array)
-
+  // z-index
+  let num = 0;
 
   // присвоюємо всім елементам конкретне значення зсуву
   items.forEach((item, i) => {
     item.style.transform = `translateX(${array[i]}px)`;
+
+    if(array[i] === 0) num = 2;
+    if(array[i] > 0 || array[i] < 0) num = 1;
+    if(array[i] >= 1200*2 || array[i] <= -1200*2) num = 0;
+    
+    item.style.zIndex = num;
   });
 
   // гортаємо вліво
@@ -38,6 +41,10 @@
 
     items.forEach((item, i) => {
       item.style.transform = `translateX(${array[i]}px)`;
+    if(array[i] === 0) num = 2;
+    if(array[i] > 0 || array[i] < 0) num = 1;
+    if(array[i] >= 1200*2 || array[i] <= -1200*2) num = 0;
+      item.style.zIndex = num;
     });
   });
 
@@ -48,6 +55,10 @@
 
     items.forEach((item, i) => {
       item.style.transform = `translateX(${array[i]}px)`;
+      if(array[i] === 0) num = 2;
+      if(array[i] > 0 || array[i] < 0) num = 1;
+      if(array[i] >= 1200*2 || array[i] <= -1200*2) num = 0;
+      item.style.zIndex = num;
     });
   });
   
