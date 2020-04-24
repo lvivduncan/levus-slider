@@ -5,11 +5,15 @@
   box-sizing: border-box;
 }
 
-#levus-slider{
-  height: 700px;
+#levus-slider-wrapper{
   overflow: hidden;
+}
+
+#levus-slider{
+  width: 1200px;
+  height: 700px;
   position: relative;
-  display: flex;
+  margin: auto;
 }
 
 #levus-slider .left,
@@ -30,9 +34,15 @@
   right: 0;
 }
 
-#levus-slider .item{
+#levus-slider > div{
+  background-repeat: no-repeat!important;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 1200px;
+  height: 800px;
   margin: auto;
   -webkit-transition: all .5s;
   transition: all .5s;
 }
+
