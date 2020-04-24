@@ -30,7 +30,6 @@
     if(array[i] === 0) num = 2;
     if(array[i] > 0 || array[i] < 0) num = 1;
     if(array[i] >= 1200*2 || array[i] <= -1200*2) num = 0;
-    
     item.style.zIndex = num;
   });
 
@@ -41,9 +40,10 @@
 
     items.forEach((item, i) => {
       item.style.transform = `translateX(${array[i]}px)`;
-    if(array[i] === 0) num = 2;
-    if(array[i] > 0 || array[i] < 0) num = 1;
-    if(array[i] >= 1200*2 || array[i] <= -1200*2) num = 0;
+
+      if(array[i] === 0) num = 2;
+      if(array[i] > 0 || array[i] < 0) num = 1;
+      if(array[i] >= 1200*2 || array[i] <= -1200*2) num = 0;
       item.style.zIndex = num;
     });
   });
@@ -55,6 +55,7 @@
 
     items.forEach((item, i) => {
       item.style.transform = `translateX(${array[i]}px)`;
+
       if(array[i] === 0) num = 2;
       if(array[i] > 0 || array[i] < 0) num = 1;
       if(array[i] >= 1200*2 || array[i] <= -1200*2) num = 0;
