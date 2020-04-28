@@ -12,12 +12,15 @@
   // кнопка вправо
   const right = $('#levus-slider-wrapper .right')[0];
 
+  // ширина слайда
+  const width = 1200;
+
   // тут будемо зберігати усі розміри
   const sizes = [];
 
   // заповнюємо масив розмірами
   items.forEach((item, i) => {
-    sizes.push(1200 * (i - 1));
+    sizes.push(width * (i - 1));
   });
 
   // z-index
@@ -29,7 +32,7 @@
 
     if(sizes[i] === 0) num = 2;
     if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-    if(sizes[i] >= 1200*2 || sizes[i] <= -1200*2) num = 0;
+    if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
     item.style.zIndex = num;
   });
 
@@ -43,7 +46,7 @@
 
       if(sizes[i] === 0) num = 2;
       if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-      if(sizes[i] >= 1200*2 || sizes[i] <= -1200*2) num = 0;
+      if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
       item.style.zIndex = num;
     });
   });
@@ -58,7 +61,7 @@
 
       if(sizes[i] === 0) num = 2;
       if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-      if(sizes[i] >= 1200*2 || sizes[i] <= -1200*2) num = 0;
+      if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
       item.style.zIndex = num;
     });
   });
@@ -73,7 +76,7 @@
 
       if(sizes[i] === 0) num = 2;
       if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-      if(sizes[i] >= 1200*2 || sizes[i] <= -1200*2) num = 0;
+      if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
       item.style.zIndex = num;
     });
   }, 3500);
@@ -89,7 +92,7 @@
   
         if(sizes[i] === 0) num = 2;
         if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-        if(sizes[i] >= 1200*2 || sizes[i] <= -1200*2) num = 0;
+        if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
         item.style.zIndex = num;
       });
     }
@@ -102,7 +105,7 @@
   
         if(sizes[i] === 0) num = 2;
         if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-        if(sizes[i] >= 1200*2 || sizes[i] <= -1200*2) num = 0;
+        if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
         item.style.zIndex = num;
       });
     }    
