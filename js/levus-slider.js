@@ -78,4 +78,34 @@
     });
   }, 3500);
 
+  // keyboard 
+  document.addEventListener('keydown', e => {
+    if(e.key == "ArrowLeft" || e.code == "ArrowLeft"){
+      const element = sizes.pop();
+      sizes.unshift(element);
+  
+      items.forEach((item, i) => {
+        item.style.transform = `translateX(${sizes[i]}px)`;
+  
+        if(sizes[i] === 0) num = 2;
+        if(sizes[i] > 0 || sizes[i] < 0) num = 1;
+        if(sizes[i] >= 1200*2 || sizes[i] <= -1200*2) num = 0;
+        item.style.zIndex = num;
+      });
+    }
+    if(e.key == "ArrowRight" || e.code == "ArrowRight"){
+      const element = sizes.shift();
+      sizes.push(element);
+  
+      items.forEach((item, i) => {
+        item.style.transform = `translateX(${sizes[i]}px)`;
+  
+        if(sizes[i] === 0) num = 2;
+        if(sizes[i] > 0 || sizes[i] < 0) num = 1;
+        if(sizes[i] >= 1200*2 || sizes[i] <= -1200*2) num = 0;
+        item.style.zIndex = num;
+      });
+    }    
+  });
+
 }
