@@ -24,9 +24,6 @@
   // ширина слайда
   const width = 1200;
 
-  // ширина вікна
-  // const windowWidth = window.innerWidth;
-
   // тут будемо зберігати усі розміри
   const sizes = [];
 
