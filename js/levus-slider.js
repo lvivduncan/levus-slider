@@ -1,10 +1,7 @@
 
 {
-  // slider
-  const slider = document.querySelector('#levus-slider');
-
-  // усі блоки з картинками (без клонованих)
-  let items = document.querySelectorAll('#levus-slider article');
+  // усі блоки з картинками
+  const items = document.querySelectorAll('#levus-slider > div');
 
   // кнопка вліво
   const left = document.querySelector('#levus-slider-wrapper .left');
@@ -12,50 +9,103 @@
   // кнопка вправо
   const right = document.querySelector('#levus-slider-wrapper .right');
 
-  // робимо клони
-  items.forEach(item => {
-    const clone = item.cloneNode(true);
-    slider.append(clone);
-  });
-
-  // усі блоки разом з клонованими
-  items = document.querySelectorAll('#levus-slider article');
-
-  // ширина вікна
-  const fullWidth = window.innerWidth;
-
   // ширина слайда
   const width = 1200;
 
-  // 1 зсув
-  let offset = width - ((fullWidth - width) / 2);
+  // тут будемо зберігати усі розміри
+  const sizes = [];
 
-  // змінюємо початкові параметри слайдера
-  slider.style.overflowX = 'scroll';
-  // slider.style.width = `${width * items.length}px`;
-  slider.style.width = `99999px`;
-  slider.style.transform = `matrix(1, 0, 0, 1, -${offset}, 0)`;
+  // заповнюємо масив розмірами
+  items.forEach((item, i) => {
+    sizes.push(width * (i - 1));
+  });
+
+  // z-index
+  let num = 0;
+
+  // присвоюємо всім елементам конкретне значення зсуву
+  items.forEach((item, i) => {
+    item.style.transform = `translateX(${sizes[i]}px)`;
+
+    if(sizes[i] === 0) num = 2;
+    if(sizes[i] > 0 || sizes[i] < 0) num = 1;
+    if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+    item.style.zIndex = num;
+  });
 
   // гортаємо вліво
-  left.addEventListener('click', _ => {
-    offset += width;
-    slider.style.transform = `matrix(1, 0, 0, 1, -${offset}, 0)`;
+  left.addEventListener('click', () => {
+    const element = sizes.pop();
+    sizes.unshift(element);
 
-    const element = slider.firstElementChild.cloneNode(!0);
-    // const element = slider.removeChild(slider.firstElementChild);
-    slider.append(element);
+    items.forEach((item, i) => {
+      item.style.transform = `translateX(${sizes[i]}px)`;
 
+      if(sizes[i] === 0) num = 2;
+      if(sizes[i] > 0 || sizes[i] < 0) num = 1;
+      if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+      item.style.zIndex = num;
+    });
   });
 
   // гортаємо вправо
-  right.addEventListener('click', _ => {
-    offset -= width;
-    slider.style.transform = `matrix(1, 0, 0, 1, -${offset}, 0)`;
+  right.addEventListener('click', () => {
+    const element = sizes.shift();
+    sizes.push(element);
 
-    const element = slider.lastElementChild.cloneNode(!0);
-    // const element = slider.removeChild(slider.lastElementChild);
-    slider.prepend(element);
+    items.forEach((item, i) => {
+      item.style.transform = `translateX(${sizes[i]}px)`;
 
+      if(sizes[i] === 0) num = 2;
+      if(sizes[i] > 0 || sizes[i] < 0) num = 1;
+      if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+      item.style.zIndex = num;
+    });
+  });
+  
+  // autoscroll
+  setInterval( () => {
+    const element = sizes.pop();
+    sizes.unshift(element);
+
+    items.forEach((item, i) => {
+      item.style.transform = `translateX(${sizes[i]}px)`;
+
+      if(sizes[i] === 0) num = 2;
+      if(sizes[i] > 0 || sizes[i] < 0) num = 1;
+      if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+      item.style.zIndex = num;
+    });
+  }, 3500);
+
+  // keyboard 
+  document.addEventListener('keydown', e => {
+    if(e.key == "ArrowLeft" || e.code == "ArrowLeft"){
+      const element = sizes.pop();
+      sizes.unshift(element);
+  
+      items.forEach((item, i) => {
+        item.style.transform = `translateX(${sizes[i]}px)`;
+  
+        if(sizes[i] === 0) num = 2;
+        if(sizes[i] > 0 || sizes[i] < 0) num = 1;
+        if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+        item.style.zIndex = num;
+      });
+    }
+    if(e.key == "ArrowRight" || e.code == "ArrowRight"){
+      const element = sizes.shift();
+      sizes.push(element);
+  
+      items.forEach((item, i) => {
+        item.style.transform = `translateX(${sizes[i]}px)`;
+  
+        if(sizes[i] === 0) num = 2;
+        if(sizes[i] > 0 || sizes[i] < 0) num = 1;
+        if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+        item.style.zIndex = num;
+      });
+    }    
   });
 
 }
