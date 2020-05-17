@@ -1,7 +1,19 @@
 
 {
+  // основна обгортка
+  const slider = document.querySelector('#levus-slider');
+
   // усі блоки з картинками
-  const items = document.querySelectorAll('#levus-slider > div');
+  let items = document.querySelectorAll('#levus-slider article');
+
+  // робимо клони
+  items.forEach(item => {
+    const clone = item.cloneNode(true);
+    slider.append(clone);
+  });
+
+  // і знову отримуємо усі слайди (з клонованими)
+  items = document.querySelectorAll('#levus-slider article');
 
   // кнопка вліво
   const left = document.querySelector('#levus-slider-wrapper .left');
@@ -12,12 +24,15 @@
   // ширина слайда
   const width = 1200;
 
+  // ширина вікна
+  // const windowWidth = window.innerWidth;
+
   // тут будемо зберігати усі розміри
   const sizes = [];
 
   // заповнюємо масив розмірами
   items.forEach((item, i) => {
-    sizes.push(width * (i - 1));
+    sizes.push(width * (i - 2));
   });
 
   // z-index
