@@ -23,7 +23,7 @@
 
   // ширина вікна
   let viewport = window.innerWidth;
-  
+
   window.addEventListener('resize', () => {
     viewport = window.innerWidth;
   });
@@ -31,7 +31,7 @@
   // ширина слайда
   let width = 1200;
 
-  if(viewport > 1200) width = 1200;
+  if (viewport > 1200) width = 1200;
   else width = viewport;
 
   // тут будемо зберігати усі розміри
@@ -49,10 +49,14 @@
   items.forEach((item, i) => {
     item.style.transform = `translateX(${sizes[i]}px)`;
 
-    if(sizes[i] === 0) num = 2;
-    if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-    if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+    if (sizes[i] === 0) num = 2;
+    if (sizes[i] > 0 || sizes[i] < 0) num = 1;
+    if (sizes[i] >= width * 2 || sizes[i] <= -width * 2) num = 0;
     item.style.zIndex = num;
+    
+    // показуємо текстовий контент тільки на активному слайді
+    if (sizes[i] === 0) item.children[0].style.opacity = 1;
+    else item.children[0].style.opacity = 0;
   });
 
   // гортаємо вліво
@@ -63,10 +67,14 @@
     items.forEach((item, i) => {
       item.style.transform = `translateX(${sizes[i]}px)`;
 
-      if(sizes[i] === 0) num = 2;
-      if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-      if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+      if (sizes[i] === 0) num = 2;
+      if (sizes[i] > 0 || sizes[i] < 0) num = 1;
+      if (sizes[i] >= width * 2 || sizes[i] <= -width * 2) num = 0;
       item.style.zIndex = num;
+      
+      // показуємо текстовий контент тільки на активному слайді
+      if (sizes[i] === 0) item.children[0].style.opacity = 1;
+      else item.children[0].style.opacity = 0;
     });
   });
 
@@ -78,56 +86,72 @@
     items.forEach((item, i) => {
       item.style.transform = `translateX(${sizes[i]}px)`;
 
-      if(sizes[i] === 0) num = 2;
-      if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-      if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+      if (sizes[i] === 0) num = 2;
+      if (sizes[i] > 0 || sizes[i] < 0) num = 1;
+      if (sizes[i] >= width * 2 || sizes[i] <= -width * 2) num = 0;
       item.style.zIndex = num;
+      
+      // показуємо текстовий контент тільки на активному слайді
+      if (sizes[i] === 0) item.children[0].style.opacity = 1;
+      else item.children[0].style.opacity = 0;
     });
   });
-  
+
   // autoscroll
-  setInterval( () => {
+  setInterval(() => {
     const element = sizes.pop();
     sizes.unshift(element);
 
     items.forEach((item, i) => {
       item.style.transform = `translateX(${sizes[i]}px)`;
 
-      if(sizes[i] === 0) num = 2;
-      if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-      if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+      if (sizes[i] === 0) num = 2;
+      if (sizes[i] > 0 || sizes[i] < 0) num = 1;
+      if (sizes[i] >= width * 2 || sizes[i] <= -width * 2) num = 0;
       item.style.zIndex = num;
+      
+      // показуємо текстовий контент тільки на активному слайді
+      if (sizes[i] === 0) item.children[0].style.opacity = 1;
+      else item.children[0].style.opacity = 0;
     });
   }, 3500);
 
   // keyboard 
   document.addEventListener('keydown', e => {
-    if(e.key == "ArrowLeft" || e.code == "ArrowLeft"){
+    if (e.key == "ArrowLeft" || e.code == "ArrowLeft") {
       const element = sizes.pop();
       sizes.unshift(element);
-  
+
       items.forEach((item, i) => {
         item.style.transform = `translateX(${sizes[i]}px)`;
-  
-        if(sizes[i] === 0) num = 2;
-        if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-        if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+
+        if (sizes[i] === 0) num = 2;
+        if (sizes[i] > 0 || sizes[i] < 0) num = 1;
+        if (sizes[i] >= width * 2 || sizes[i] <= -width * 2) num = 0;
         item.style.zIndex = num;
+        
+        // показуємо текстовий контент тільки на активному слайді
+        if (sizes[i] === 0) item.children[0].style.opacity = 1;
+        else item.children[0].style.opacity = 0;
       });
     }
-    if(e.key == "ArrowRight" || e.code == "ArrowRight"){
+    if (e.key == "ArrowRight" || e.code == "ArrowRight") {
       const element = sizes.shift();
       sizes.push(element);
-  
+
       items.forEach((item, i) => {
         item.style.transform = `translateX(${sizes[i]}px)`;
-  
-        if(sizes[i] === 0) num = 2;
-        if(sizes[i] > 0 || sizes[i] < 0) num = 1;
-        if(sizes[i] >= width*2 || sizes[i] <= -width*2) num = 0;
+
+        if (sizes[i] === 0) num = 2;
+        if (sizes[i] > 0 || sizes[i] < 0) num = 1;
+        if (sizes[i] >= width * 2 || sizes[i] <= -width * 2) num = 0;
         item.style.zIndex = num;
+        
+        // показуємо текстовий контент тільки на активному слайді
+        if (sizes[i] === 0) item.children[0].style.opacity = 1;
+        else item.children[0].style.opacity = 0;
       });
-    }    
+    }
   });
 
 }
