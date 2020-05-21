@@ -21,8 +21,18 @@
   // кнопка вправо
   const right = document.querySelector('#levus-slider-wrapper .right');
 
+  // ширина вікна
+  let viewport = window.innerWidth;
+  
+  window.addEventListener('resize', () => {
+    viewport = window.innerWidth;
+  });
+
   // ширина слайда
-  const width = 1200;
+  let width = 1200;
+
+  if(viewport > 1200) width = 1200;
+  else width = viewport;
 
   // тут будемо зберігати усі розміри
   const sizes = [];
